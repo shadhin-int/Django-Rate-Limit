@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-v&&g(%o4#%pq4f!v(du4&&+0ue_ekn^$cy#l!171*a0vdr9!1t
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -51,6 +51,20 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+REST_FRAMEWORK = {
+
+    'DEFAULT_THROTTLE_CLASSES': [
+        'product.throttles.HighRateThrottle',
+        'product.throttles.LowRateThrottle',
+    ],
+
+    'DEFAULT_THROTTLE_RATES': {
+        'high': '30/day',
+        'low': '4/day'
+    }
+
+}
 
 ROOT_URLCONF = 'rate_limit.urls'
 

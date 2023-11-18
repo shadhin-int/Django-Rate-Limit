@@ -12,13 +12,13 @@ class ProductAdmin(admin.ModelAdmin):
         'price',
         'color',
         'weight',
-        'created_at',
+        'create_at',
         'updated_at',
     )
 
     list_filter = (
         'color',
-        'created_at'
+        'create_at'
     )
 
-    date_hierarchy = 'created_at'
+    date_hierarchy = 'create_at'
